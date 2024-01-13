@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 
 @Component({
   selector: 'app-thoughts-created',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,RouterModule],
   templateUrl: './thoughts-created.component.html',
   styleUrl: './thoughts-created.component.css'
 })
@@ -27,7 +28,7 @@ export class ThoughtsCreatedComponent {
 
   CancelSend()
   {
-    alert("Send Cancel");
+    
   }
 
 }
