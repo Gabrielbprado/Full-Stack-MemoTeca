@@ -1,0 +1,13 @@
+<div class="pensamento {{ thoughts.modelo }} ff-roboto-mono" [ngClass] = "CheckCharacter()">
+    <img src="../../../assets/imgs/{{ thoughts.modelo }}.png" alt="Aspas Coloridas">
+    <p class="conteudo">{{ thoughts.conteudo }}</p>
+    <p class="autoria"><b>{{ thoughts.autoria }}</b></p>
+    <div class="acoes">
+        <button class="botao-editar">
+            <img src="../../../assets/imgs/icone-editar.png" alt="Ícone de editar">
+        </button>
+        <button class="botao-excluir">
+            <img src="../../../assets/imgs/icone-excluir.png" alt="Ícone de excluir">
+        </button>
+    </div>
+</div>
