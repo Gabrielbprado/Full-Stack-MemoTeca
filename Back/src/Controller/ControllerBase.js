@@ -9,6 +9,13 @@ class ControllerBase
         const thought = await this.Entity.GetAll();
         res.status(200).json(thought);
     }
+
+    async GetId(req,res)
+    {
+        const id = req.params.id;
+        const thought = await this.Entity.GetId(id);
+        res.status(200).json(thought);
+    }
     async Post(req,res)
     {
         const Newthought = req.body;

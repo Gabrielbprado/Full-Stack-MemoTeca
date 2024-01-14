@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { thoughts } from './thoughts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-thoughts',
   standalone: true,
-  imports: [CommonModule,HttpClientModule],
+  imports: [CommonModule,HttpClientModule,RouterModule],
   templateUrl: './thoughts.component.html',
   styleUrl: './thoughts.component.css'
 })

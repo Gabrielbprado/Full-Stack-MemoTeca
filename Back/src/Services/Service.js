@@ -11,6 +11,11 @@ class Service
         return datasource[this.Model].findAll();
     }
 
+    async GetId(id)
+    {
+        return datasource[this.Model].findByPk(id);
+    }
+
     async Post(Newthought)
     {
         return datasource[this.Model].create(Newthought);

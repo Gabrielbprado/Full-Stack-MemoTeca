@@ -3,11 +3,14 @@
     <p class="conteudo">{{ thoughts.thought }}</p>
     <p class="autoria"><b>{{ thoughts.author }}</b></p>
     <div class="acoes">
-        <button class="botao-editar">
-            <img src="../../../assets/imgs/icone-editar.png" alt="Ícone de editar">
+        <button class="botao-editar" >
+            <img src="../../../assets/imgs/icone-editar.png" routerLink="/thougths/edit-pensamento/{{thoughts.id}}" alt="Ícone de editar">
         </button>
-        <button class="botao-excluir">
-            <img src="../../../assets/imgs/icone-excluir.png" alt="Ícone de excluir">
+        <button class="botao-excluir" routerLink="/thougths/delete-pensamento/{{thoughts.id}}">
+            
+            <img src="../../../assets/imgs/icone-excluir.png"  alt="Ícone de excluir">
         </button>
+        
     </div>
 </div>
+

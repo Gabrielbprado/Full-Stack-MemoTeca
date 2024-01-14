@@ -26,7 +26,10 @@ export class ThoughtsCreatedComponent {
 
   createdThoughts()
   {
-        this.service.Post(this.thoughts).subscribe();
+        this.service.Post(this.thoughts).subscribe(() =>
+        {
+          this.Router.navigate(['/listarPensamentos'])
+        });
         
   }
 
