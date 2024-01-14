@@ -10,7 +10,7 @@
           id="pensamento"
           name="pensamento"
           placeholder="Digite o pensamento"
-          [(ngModel)] = "thoughts.content"
+          [(ngModel)] = "thoughts.thought"
             >
             <label for="autoria">Autoria ou fonte</label>
             <input
@@ -30,7 +30,7 @@
                 id="modelo1"
                 value="modelo1"
                 name="modelo-card"
-                [(ngModel)] = "thoughts.modelo"
+                [(ngModel)] = "thoughts.customModel"
                 
             >
             <div class="custom-radio">
@@ -41,7 +41,7 @@
         Prévia:
         <div class="modelo modelo1 ff-roboto-mono">
             <img src="../../../../assets/imgs/modelo1.png" alt="Aspas azuis">
-            <p class="conteudo">{{ thoughts.content }}</p>
+            <p class="conteudo">{{ thoughts.thought }}</p>
             <p class="autoria"><b>{{ thoughts.author }}</b></p>
         </div>
        
@@ -53,7 +53,7 @@
                 id="modelo2"
                 value="modelo2"
                 name="modelo-card"
-                [(ngModel)] = "thoughts.modelo"
+                [(ngModel)] = "thoughts.customModel"
             >
             <div class="custom-radio">
                 <span></span>
@@ -63,7 +63,7 @@
         Prévia:
         <div class="modelo modelo2 ff-roboto-mono">
             <img src="../../../../assets/imgs/modelo2.png" alt="Aspas azuis Claras">
-            <p class="conteudo">{{ thoughts.content }}</p>
+            <p class="conteudo">{{ thoughts.thought }}</p>
             <p class="autoria"><b>{{ thoughts.author }}</b></p>
         </div>
        
@@ -75,7 +75,7 @@
                 id="modelo3"
                 value="modelo3"
                 name="modelo-card"
-                [(ngModel)] = "thoughts.modelo"
+                [(ngModel)] = "thoughts.customModel"
             >
             <div class="custom-radio">
                 <span></span>
@@ -85,7 +85,7 @@
         Prévia:
         <div class="modelo modelo3 ff-roboto-mono">
             <img src="../../../../assets/imgs/modelo3.png" alt="Aspas Verdes">
-            <p class="conteudo">{{ thoughts.content }}</p>
+            <p class="conteudo">{{ thoughts.thought }}</p>
             <p class="autoria"><b>{{ thoughts.author }}</b></p>
         </div>
        
@@ -93,7 +93,7 @@
 </div>
 <div class="acoes">
     <button (click) = "createdThoughts()" class="botao">Salvar</button>
-    <button (click)= "CancelSend()" routerLink = '/listarPensamentos'  class="botao">Cancelar</button>
+    <button (click)= "CancelSend()"   class="botao">Cancelar</button>
 </div>
         </form>
 </section>

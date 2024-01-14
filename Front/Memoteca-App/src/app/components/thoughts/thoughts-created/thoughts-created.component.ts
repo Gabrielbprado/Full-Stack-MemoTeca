@@ -1,6 +1,9 @@
+import { routes } from './../../../app.routes';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { thoughts } from '../thoughts';
+import { ThoughtService } from '../thought.service';
 
 
 @Component({
@@ -13,22 +16,23 @@ import { RouterModule, Routes } from '@angular/router';
 
 export class ThoughtsCreatedComponent {
 
-  thoughts = {
-    id : '1',
-    content : 'Learning Angular',
-    author : 'dev',
-    modelo : 'modelo 1'
+   thoughts:thoughts = {
+    thought : ' ',
+    author : '',
+    customModel : 'modelo1'
 
   }
+  constructor(private service: ThoughtService, private Router: Router) {}
 
   createdThoughts()
   {
-    alert("Thougths Created");
+        this.service.Post(this.thoughts).subscribe();
+        
   }
 
   CancelSend()
   {
-    
+    this.Router.navigate(['/listarPensamentos']);
   }
 
 }

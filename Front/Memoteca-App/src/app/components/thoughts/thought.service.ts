@@ -1,0 +1,23 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { thoughts } from './thoughts';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ThoughtService {
+
+    private readonly API = 'http://localhost:3000/api/thought';
+  constructor(private http: HttpClient) { }
+  
+  GetAll() :Observable<thoughts[]>
+  {
+    return this.http.get<thoughts[]>(this.API);
+  }
+
+  Post(thought: thoughts) :Observable<thoughts>
+  {
+    return this.http.post<thoughts>(this.API,thought);
+  }
+}
