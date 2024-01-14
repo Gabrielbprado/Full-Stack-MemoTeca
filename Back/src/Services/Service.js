@@ -8,7 +8,35 @@ class Service
     }
     async GetAll()
     {
-        datasource[this.Model].findAll();
+        return datasource[this.Model].findAll();
+    }
+
+    async Post(Newthought)
+    {
+        return datasource[this.Model].create(Newthought);
+    }
+
+    async Put(id,newThought)
+    {
+        return datasource[this.Model].update(newThought,
+            {
+                where: 
+                {
+                    id: id
+                }
+            });
+    }
+
+    async Delete(id)
+    {
+        return  datasource[this.Model].destroy(
+            {
+                where:
+                {
+                    id: id
+                }
+            }
+        );
     }
 }
 

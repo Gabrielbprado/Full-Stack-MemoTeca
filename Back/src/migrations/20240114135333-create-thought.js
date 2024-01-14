@@ -10,12 +10,15 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             thought: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
             author: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
             customModel: {
+              
                 type: Sequelize.STRING
             },
             createdAt: {
