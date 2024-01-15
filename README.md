@@ -44,7 +44,7 @@ You'll need to keep two terminals open, one for the  server and another for the 
 
 In the first terminal, go to the backend folder and start the API using the following command. The server will use port 3000 to run.
 
-```npm start```
+```npm run dev```
 
 In the second terminal, go to the project's front/Memoteca-app folder and run the following command. Navigate to http://localhost:4200/ to open the app. The app will automatically reload if you change any of the source files.
 
