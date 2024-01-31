@@ -1,4 +1,4 @@
-﻿# MemoTeca 💭 Learning Angular 14 and NodeJs
+﻿# MemoTeca 💭 Learning Angular 17 and NodeJs
 
 
 ![MemoTeca Logo](./imgs/Header.png)
