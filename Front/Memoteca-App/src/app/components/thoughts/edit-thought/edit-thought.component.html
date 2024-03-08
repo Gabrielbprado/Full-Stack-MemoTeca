@@ -1,99 +1,105 @@
 <section class="container editar-pensamentos ff-inter">
     <header class="header">
-        <h2>Editar  <br> pensamento :</h2>
+      <h2>Adicione um <br>pensamento novo:</h2>
     </header>
-    <form>
-        <label for="pensamento">Pensamento</label>
-        <input
-          type="textarea"
-          class="input"
-          id="pensamento"
-          name="pensamento"
-          placeholder="Digite o pensamento"
-          [(ngModel)] = "thought.thought"
-            >
-            <label for="autoria">Autoria ou fonte</label>
+    <form [formGroup]="formulario" *ngIf="formulario">
+      <label for="pensamento">Pensamento</label>
+      <input
+        type="textarea"
+        class="input"
+        id="pensamento"
+        formControlName="thought"
+        placeholder="Digite o pensamento"
+      >
+      <div class="mensagem__erro" *ngIf="formulario.get('thought')?.errors && formulario.get('thought')?.touched">
+        Pensamento é obrigatório!
+      </div>
+      <label for="autoria">Autoria ou fonte</label>
+      <input
+        type="text"
+        class="input"
+        id="autoria"
+        formControlName="author"
+        placeholder="Digite a autoria ou fonte"
+      >
+      <div class="mensagem__erro"
+        *ngIf="formulario.get('author')?.errors && formulario.get('author')?.touched">
+          Autoria é obrigatória!
+      </div>
+    
+      <label for="modelo">Selecione o modelo do card:</label>
+      <div class="container-radio">
+        <div class="radio-modelo">
+          <label for="modelo1">
             <input
-              type="text"
-              class="input"
-              id="autoria"
-              name="autoria"
-              placeholder="Digite a autoria ou fonte"
-              [(ngModel)] = "thought.author"
-                >
-                <label for="modelo">Selecione o modelo do card:</label>
-<div class="container-radio">
-    <div class="radio-modelo">
-        <label for="modelo1">
-            <input 
-                type="radio"
-                id="modelo1"
-                value="modelo1"
-                name="modelo-card"
-                [(ngModel)] = "thought.customModel"
-                
+              type="radio"
+              id="modelo1"
+              value="modelo1"
+              formControlName="customModel"
             >
             <div class="custom-radio">
-                <span></span>
+              <span></span>
             </div>
             <span>Modelo 1</span>
-        </label>
-        Prévia:
-        <div class="modelo modelo1 ff-roboto-mono">
+          </label>
+          Prévia:
+          <div class="modelo modelo1 ff-roboto-mono">
             <img src="../../../../assets/imgs/modelo1.png" alt="Aspas azuis">
-            <p class="conteudo">{{ thought.thought }}</p>
-            <p class="autoria"><b>{{ thought.author }}</b></p>
+            <p class="conteudo">{{ formulario.get('thought')?.value }}</p>
+            <p class="autoria"><b>{{ formulario.get('author')?.value}}</b></p>
+          </div>
         </div>
-       
-    </div>
-    <div class="radio-modelo">
-        <label for="modelo2">
-            <input 
-                type="radio"
-                id="modelo2"
-                value="modelo2"
-                name="modelo-card"
-                [(ngModel)] = "thought.customModel"
+  
+        <div class="radio-modelo">
+          <label for="modelo2">
+            <input
+              type="radio"
+              id="modelo2"
+              value="modelo2"
+              formControlName="customModel"
             >
             <div class="custom-radio">
-                <span></span>
+              <span></span>
             </div>
             <span>Modelo 2</span>
-        </label>
-        Prévia:
-        <div class="modelo modelo2 ff-roboto-mono">
-            <img src="../../../../assets/imgs/modelo2.png" alt="Aspas azuis Claras">
-            <p class="conteudo">{{ thought.thought }}</p>
-            <p class="autoria"><b>{{ thought.author }}</b></p>
+          </label>
+          Prévia:
+          <div class="modelo modelo2 ff-roboto-mono">
+            <img src="../../../../assets/imgs/modelo2.png" alt="Aspas azul claro">
+            <p class="conteudo">{{ formulario.get('thought')?.value }}</p>
+            <p class="autoria"><b>{{ formulario.get('author')?.value}}</b></p>
+          </div>
         </div>
-       
-    </div>
-    <div class="radio-modelo">
-        <label for="modelo3">
-            <input 
-                type="radio"
-                id="modelo3"
-                value="modelo3"
-                name="modelo-card"
-                [(ngModel)] = "thought.customModel"
+  
+        <div class="radio-modelo">
+          <label for="modelo3">
+            <input
+              type="radio"
+              id="modelo3"
+              value="modelo3"
+              formControlName="customModel"
             >
             <div class="custom-radio">
-                <span></span>
+              <span></span>
             </div>
             <span>Modelo 3</span>
-        </label>
-        Prévia:
-        <div class="modelo modelo3 ff-roboto-mono">
-            <img src="../../../../assets/imgs/modelo3.png" alt="Aspas Verdes">
-            <p class="conteudo">{{ thought.thought }}</p>
-            <p class="autoria"><b>{{ thought.author }}</b></p>
+          </label>
+          Prévia:
+          <div class="modelo modelo3 ff-roboto-mono">
+            <img src="../../../../assets/imgs/modelo3.png" alt="Aspas verdes">
+            <p class="conteudo">{{ formulario.get('thought')?.value }}</p>
+            <p class="autoria"><b>{{ formulario.get('author')?.value}}</b></p>
+          </div>
         </div>
-       
-    </div>
-</div>
-<div class="acoes">
-    <button (click) = "EditThoughts()" class="botao">Editar</button>
-    <button (click)= "CancelSend()"   class="botao">Cancelar</button>
-</div>
-        </form>
-</section>
+      </div>
+      <div class="acoes">
+        <button
+          [disabled]="!formulario.valid"
+          (click)="EditThoughts()"
+          [ngClass]="VerifyButton()"
+          >Salvar
+        </button>
+        <button (click)="CancelSend()" class="botao">Cancelar</button>
+      </div>
+    </form>
+  </section>

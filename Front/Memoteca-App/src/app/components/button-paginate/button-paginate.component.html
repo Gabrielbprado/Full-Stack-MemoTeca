@@ -1,0 +1,8 @@
+<div class="container-button" *ngIf="haveMorThoughts; else NoThought">
+    <button class="button-paginate">Carregar Mais</button>
+</div>
+<ng-template #NoThought>
+    <div class="no-thought">
+        <p>Não Há Pensamentos Cadastrados !!!</p>
+        <img src="../../../../assets/imgs/logo-memoteca.png" alt="Nuvem Pensado">
+    </div>

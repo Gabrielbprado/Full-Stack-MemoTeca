@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { thoughts } from './thoughts';
+import { thoughts } from '../thoughts-Model/thoughts';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,9 +11,14 @@ export class ThoughtService {
     private readonly API = 'http://localhost:3000/api/thought';
   constructor(private http: HttpClient) { }
   
-  GetAll() :Observable<thoughts[]>
+  GetAll(page:number,query: string) :Observable<thoughts[]>
   {
-    return this.http.get<thoughts[]>(this.API);
+    let params = new HttpParams().set('page',page)
+    if(query.trim().length > 2)
+    {
+      params = params.set('query',query);
+    }
+    return this.http.get<thoughts[]>(this.API,{params});
   }
 
   GetId(id: Number) :Observable<thoughts>
@@ -36,7 +41,6 @@ export class ThoughtService {
   Put(thought: thoughts) :Observable<thoughts>
   {
     const url = `${this.API}/${thought.id}`;
-    console.log(`o Id é esse ak ${thought.id}`);
     return this.http.put<thoughts>(url,thought);
   }
 }
