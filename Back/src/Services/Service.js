@@ -1,14 +1,25 @@
 const datasource = require('../models');
 
+
+
 class Service
 {
     constructor(NameModel)
     {
         this.Model = NameModel;
     }
-    async GetAll()
+
+
+    async GetAll(page,limit)
     {
-        return datasource[this.Model].findAll();
+
+        
+        return datasource[this.Model].findAll(
+            {
+                offset: Number((page * limit) - limit),
+                limit: limit
+            }
+        );
     }
 
     async GetId(id)
