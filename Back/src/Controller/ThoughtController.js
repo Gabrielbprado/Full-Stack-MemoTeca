@@ -13,6 +13,7 @@ class ThoughtController extends ControllerBase
     async GetAllThought(req,res)
     {
         const { page = 1 } = req.query;
+        const { query = ''} = req.query;
         //console.log(page);
 
         // Limite de registros em cada página
@@ -23,10 +24,14 @@ class ThoughtController extends ControllerBase
 
         // Contar a quantidade de registro no banco de dados
         
-        const thought = await service.GetAll(page,limit);
+        
+
+        const thought = await service.GetAll(page,limit,query);
         res.status(200).json(thought);
+
         
     }
+    
 }
 
 module.exports = ThoughtController;

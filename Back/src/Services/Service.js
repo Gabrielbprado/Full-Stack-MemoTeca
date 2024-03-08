@@ -1,5 +1,5 @@
 const datasource = require('../models');
-
+const { Op } = require('sequelize');
 
 
 class Service
@@ -10,17 +10,41 @@ class Service
     }
 
 
-    async GetAll(page,limit)
+    async GetAll(page,limit,query)
     {
+        if(query.length > 2)
+        {
+            return datasource[this.Model].findAll(
+                {
+                    where: {
+                        [Op.or]: [
 
-        
-        return datasource[this.Model].findAll(
-            {
-                offset: Number((page * limit) - limit),
-                limit: limit
-            }
-        );
+                        
+                            { author : query }
+                        ]},
+                    
+                    offset: Number((page * limit) - limit),
+                    limit: limit
+                }
+            );
+        }else
+        {
+            
+            return datasource[this.Model].findAll(
+                {
+                    
+                    offset: Number((page * limit) - limit),
+                    limit: limit
+                }
+            );
+
+        }
+
     }
+
+
+
+    
 
     async GetId(id)
     {
