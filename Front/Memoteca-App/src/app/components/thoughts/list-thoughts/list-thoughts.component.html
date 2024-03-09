@@ -11,7 +11,10 @@
             <img src="../../../../assets/imgs/lupa.png" alt="">
         </div>      
         <h2 class="ff-inter">Meu Mural</h2>
-        <button routerLink = "/criarPensamento" class="botao">Adicionar pensamento</button>
+    <div class="botoes">
+        <button class="botao" routerLink="/criarPensamento">Adicionar pensamento</button>
+        <button (click)="SeeThoughts()" class="botao">Ver Pensamentos Favoritos</button>
+    </div>
     </header>
         <div class="mural" *ngIf="listThoughts.length > 0, else semPensamentos">
         <div *ngFor="let thoughts of listThoughts">

@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     templateUrl: './list-thoughts.component.html',
     styleUrl: './list-thoughts.component.css',
-    imports: [ThoughtsComponent, ButtonPaginateComponent,CommonModule,ReactiveFormsModule,FormsModule]
+    imports: [RouterModule ,ThoughtsComponent, ButtonPaginateComponent,CommonModule,ReactiveFormsModule,FormsModule]
 })
 export class ListThoughtsComponent implements OnInit{
 
@@ -22,13 +22,14 @@ export class ListThoughtsComponent implements OnInit{
   pag: number = 1;
   haveMoreThoughts: boolean = true;
   search: string = '';
+  favorite: boolean = false;  
 
   constructor(private service:ThoughtService) {}
 
   LoadMore() 
   {
-   
-    this.service.GetAll(++this.pag,this.search).subscribe((listThoughts) =>
+
+    this.service.GetAll(++this.pag,this.search,this.favorite).subscribe((listThoughts) =>
     {
       this.listThoughts.push(...listThoughts);
       if(!listThoughts.length)
@@ -43,17 +44,28 @@ export class ListThoughtsComponent implements OnInit{
   {
     this.haveMoreThoughts = true;
     this.pag = 1;
-    this.service.GetAll(this.pag,this.search).subscribe((listThoughts) =>
+    this.service.GetAll(this.pag,this.search,this.favorite).subscribe((listThoughts) =>
     {
       this.listThoughts = listThoughts;
     
+    });
+  }
+
+  SeeThoughts()
+  {
+   this.haveMoreThoughts = true;
+    this.favorite = !this.favorite;
+    
+    this.service.GetAll(this.pag,this.search,this.favorite).subscribe((listThoughts) =>
+    {
+      this.listThoughts = listThoughts;
     });
   }
   
   ngOnInit() : void
   {
     
-    this.service.GetAll(this.pag,this.search).subscribe((listThoughts) =>
+    this.service.GetAll(this.pag,this.search,this.favorite).subscribe((listThoughts) =>
     {
       this.listThoughts = listThoughts;
     });

@@ -11,13 +11,24 @@ export class ThoughtService {
     private readonly API = 'http://localhost:3000/api/thought';
   constructor(private http: HttpClient) { }
   
-  GetAll(page:number,query: string) :Observable<thoughts[]>
+  GetAll(page:number,query: string,favorite: boolean) :Observable<thoughts[]>
   {
+    if(favorite)
+    {
+      const url = `${this.API}/get/favorite`;
+      let params = new HttpParams().set('page',page)
+    
+      params = params.set('query',query);
+    
+    return this.http.get<thoughts[]>(this.API,{params});
+    }
+    
     let params = new HttpParams().set('page',page)
     
       params = params.set('query',query);
     
     return this.http.get<thoughts[]>(this.API,{params});
+    
   }
 
   GetId(id: Number) :Observable<thoughts>
@@ -49,4 +60,6 @@ export class ThoughtService {
     const url = `${this.API}/favorite/${thought.id}`;
     return this.http.patch<thoughts>(url,thought);
   }
+
+ 
 }

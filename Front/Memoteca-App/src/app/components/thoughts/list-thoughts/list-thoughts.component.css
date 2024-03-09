@@ -70,6 +70,16 @@
     
   }
 
+  .botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .botoes button {
+    margin-left: 10px;
+    margin-right: 2px;
+  }
+
   @media screen and (max-width: 216px) {
     .buscar-pensamento {
       display: none;
