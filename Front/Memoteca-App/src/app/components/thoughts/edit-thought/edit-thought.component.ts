@@ -37,6 +37,7 @@ ngOnInit() : void
       thought: [thoughts.thought, [Validators.required]],
       author: [thoughts.author , [Validators.required]],
       customModel: [thoughts.customModel, [Validators.required]],
+      favorite: [thoughts.favorite]
    
   });
 

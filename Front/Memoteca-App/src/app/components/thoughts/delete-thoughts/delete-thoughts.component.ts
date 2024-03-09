@@ -17,7 +17,8 @@ export class DeleteThoughtsComponent {
     id: 0,
     thought: '',
     author: '',
-    customModel: ''
+    customModel: '',
+    favorite: false
   }
 
  

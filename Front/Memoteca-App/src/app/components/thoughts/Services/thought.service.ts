@@ -42,4 +42,11 @@ export class ThoughtService {
     const url = `${this.API}/${thought.id}`;
     return this.http.put<thoughts>(url,thought);
   }
+
+  FavoriteThoughts(thought: thoughts) :Observable<thoughts>
+  {
+ 
+    const url = `${this.API}/favorite/${thought.id}`;
+    return this.http.patch<thoughts>(url,thought);
+  }
 }

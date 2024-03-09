@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     templateUrl: './list-thoughts.component.html',
     styleUrl: './list-thoughts.component.css',
-    imports: [RouterModule, ThoughtsComponent, ButtonPaginateComponent,CommonModule,ReactiveFormsModule,FormsModule]
+    imports: [ThoughtsComponent, ButtonPaginateComponent,CommonModule,ReactiveFormsModule,FormsModule]
 })
 export class ListThoughtsComponent implements OnInit{
 

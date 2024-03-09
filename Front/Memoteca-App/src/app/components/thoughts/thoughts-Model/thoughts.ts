@@ -4,4 +4,5 @@ export interface thoughts
     thought: String,
     author: String,
     customModel: String,    
+    favorite: Boolean
 }

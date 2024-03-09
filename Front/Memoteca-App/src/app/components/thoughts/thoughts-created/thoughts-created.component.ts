@@ -27,6 +27,7 @@ export class ThoughtsCreatedComponent implements OnInit {
       thought: ['', [Validators.required]],
       author: ['' , [Validators.required]],
       customModel: ['modelo1', [Validators.required]],
+      favorite: [false]
 
     });
   }
