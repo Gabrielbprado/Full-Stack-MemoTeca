@@ -48,6 +48,16 @@ class ThoughtController extends ControllerBase
 
 
     }
+
+    async GetFavoriteThought(req,res)
+    {
+        const { page = 1 } = req.query;
+        const { query = ''} = req.query;
+        const limit = 6;
+
+        const thought = await service.GetAllFavoriteThought(page,limit,query);
+        res.status(200).json(thought);
+    }
 }
 
 module.exports = ThoughtController;

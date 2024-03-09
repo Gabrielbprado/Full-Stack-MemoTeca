@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -22,7 +23,8 @@ module.exports = {
                 allowNull: false
             },
             favorite: {
-                type: Sequelize.BOOLEAN
+                type: Sequelize.BOOLEAN,
+                defaultValue: false
             },
             createdAt: {
                 allowNull: false,
