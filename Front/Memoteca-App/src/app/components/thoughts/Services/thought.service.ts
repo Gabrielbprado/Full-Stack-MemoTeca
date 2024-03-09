@@ -13,21 +13,17 @@ export class ThoughtService {
   
   GetAll(page:number,query: string,favorite: boolean) :Observable<thoughts[]>
   {
-    if(favorite)
+    
+    if (favorite) 
     {
-      const url = `${this.API}/get/favorite`;
-      let params = new HttpParams().set('page',page)
-    
-      params = params.set('query',query);
-    
-    return this.http.get<thoughts[]>(this.API,{params});
-    }
-    
-    let params = new HttpParams().set('page',page)
-    
-      params = params.set('query',query);
-    
-    return this.http.get<thoughts[]>(this.API,{params});
+    const url = `${this.API}/get/favorite`;
+    let params = new HttpParams().set('page', page.toString()).set('query', query);
+    return this.http.get<thoughts[]>(url, { params });
+} else 
+{
+  let params = new HttpParams().set('page', page.toString()).set('query', query);
+  return this.http.get<thoughts[]>(this.API, { params });
+}
     
   }
 

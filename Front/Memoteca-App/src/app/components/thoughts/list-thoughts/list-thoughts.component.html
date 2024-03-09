@@ -10,8 +10,9 @@
             >
             <img src="../../../../assets/imgs/lupa.png" alt="">
         </div>      
-        <h2 class="ff-inter">Meu Mural</h2>
+        <h2 class="ff-inter">{{MyMural}}</h2>
     <div class="botoes">
+        <button class="botao" (click)="ReloadComponent()">Meu Mural</button>
         <button class="botao" routerLink="/criarPensamento">Adicionar pensamento</button>
         <button (click)="SeeThoughts()" class="botao">Ver Pensamentos Favoritos</button>
     </div>
