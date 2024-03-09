@@ -3,19 +3,17 @@
     justify-content: flex-end
   }
   
-  .botao-excluir {
+  .botao-excluir,
+  .botao-salvar,
+  .botao-editar
+  {
     border: none;
     cursor: pointer;
-    margin-left: 5px;
-    margin-top: 10px;
+    margin-right: 5px;
+    margin-top: 15px;
   }
   
-  .botao-editar {
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-    margin-top: 10px;
-  }
+  
   
   .pensamento {
     background-color: #F8F9FE;

@@ -1,5 +1,6 @@
 const Service = require('./Service');
 
+
 class ThoughtService extends Service 
 {
 
@@ -7,6 +8,8 @@ class ThoughtService extends Service
     {
         super('Thought');
     }
+
+    
 }
 
 module.exports = ThoughtService;

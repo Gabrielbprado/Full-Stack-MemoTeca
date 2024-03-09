@@ -2,25 +2,29 @@
     <header class="header">
         <h2>Adicione um <br> pensamento novo:</h2>
     </header>
-    <form>
+    <form [formGroup]="formulario">
         <label for="pensamento">Pensamento</label>
         <input
           type="textarea"
           class="input"
           id="pensamento"
-          name="pensamento"
-          placeholder="Digite o pensamento"
-          [(ngModel)] = "thoughts.thought"
+          formControlName="thought"
+          placeholder="Digite o pensamento"         
             >
+            <div class="mensagem__erro" *ngIf="formulario.get('thought')?.errors && formulario.get('thought')?.touched">
+                O Campo Pensamento é Obrigatório
+            </div>
             <label for="autoria">Autoria ou fonte</label>
             <input
               type="text"
               class="input"
               id="autoria"
-              name="autoria"
+              formControlName="author"
               placeholder="Digite a autoria ou fonte"
-              [(ngModel)] = "thoughts.author"
-                >
+             >
+             <div class="mensagem__erro" *ngIf="formulario.get('author')?.errors && formulario.get('author')?.touched">
+                O Campo Author é Obrigatório
+            </div>
                 <label for="modelo">Selecione o modelo do card:</label>
 <div class="container-radio">
     <div class="radio-modelo">
@@ -30,7 +34,6 @@
                 id="modelo1"
                 value="modelo1"
                 name="modelo-card"
-                [(ngModel)] = "thoughts.customModel"
                 
             >
             <div class="custom-radio">
@@ -41,8 +44,8 @@
         Prévia:
         <div class="modelo modelo1 ff-roboto-mono">
             <img src="../../../../assets/imgs/modelo1.png" alt="Aspas azuis">
-            <p class="conteudo">{{ thoughts.thought }}</p>
-            <p class="autoria"><b>{{ thoughts.author }}</b></p>
+            <p class="conteudo">{{ formulario.get('thought')?.value }}</p>
+            <p class="autoria"><b>{{ formulario.get('author')?.value }}</b></p>
         </div>
        
     </div>
@@ -52,8 +55,7 @@
                 type="radio"
                 id="modelo2"
                 value="modelo2"
-                name="modelo-card"
-                [(ngModel)] = "thoughts.customModel"
+                formControlName="customModel"
             >
             <div class="custom-radio">
                 <span></span>
@@ -63,8 +65,8 @@
         Prévia:
         <div class="modelo modelo2 ff-roboto-mono">
             <img src="../../../../assets/imgs/modelo2.png" alt="Aspas azuis Claras">
-            <p class="conteudo">{{ thoughts.thought }}</p>
-            <p class="autoria"><b>{{ thoughts.author }}</b></p>
+            <p class="conteudo">{{ formulario.get('thought')?.value }}</p>
+            <p class="autoria"><b>{{ formulario.get('author')?.value }}</b></p>
         </div>
        
     </div>
@@ -74,8 +76,8 @@
                 type="radio"
                 id="modelo3"
                 value="modelo3"
-                name="modelo-card"
-                [(ngModel)] = "thoughts.customModel"
+                formControlName="customModel"
+
             >
             <div class="custom-radio">
                 <span></span>
@@ -85,14 +87,14 @@
         Prévia:
         <div class="modelo modelo3 ff-roboto-mono">
             <img src="../../../../assets/imgs/modelo3.png" alt="Aspas Verdes">
-            <p class="conteudo">{{ thoughts.thought }}</p>
-            <p class="autoria"><b>{{ thoughts.author }}</b></p>
+            <p class="conteudo">{{ formulario.get('thought')?.value }}</p>
+            <p class="autoria"><b>{{ formulario.get('author')?.value }}</b></p>
         </div>
        
     </div>
 </div>
 <div class="acoes">
-    <button (click) = "createdThoughts()" class="botao">Salvar</button>
+    <button [ngClass]="VerifyButton()" [disabled]="!formulario.valid" (click) = "createdThoughts()" class="botao">Salvar</button>
     <button (click)= "CancelSend()"   class="botao">Cancelar</button>
 </div>
         </form>

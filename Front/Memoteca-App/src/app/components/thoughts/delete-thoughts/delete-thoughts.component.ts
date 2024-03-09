@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { Component } from '@angular/core';
-import { thoughts } from '../thoughts';
-import { ThoughtService } from '../thought.service';
+import { thoughts } from '../thoughts-Model/thoughts';
+import { ThoughtService } from '../Services/thought.service';
 
 @Component({
   selector: 'app-delete-thoughts',
@@ -17,7 +17,8 @@ export class DeleteThoughtsComponent {
     id: 0,
     thought: '',
     author: '',
-    customModel: ''
+    customModel: '',
+    favorite: false
   }
 
  

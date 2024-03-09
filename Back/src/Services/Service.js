@@ -1,4 +1,6 @@
 const datasource = require('../models');
+const { Op } = require('sequelize');
+
 
 class Service
 {
@@ -6,10 +8,46 @@ class Service
     {
         this.Model = NameModel;
     }
-    async GetAll()
+
+
+    async GetAll(page,limit,query)
     {
-        return datasource[this.Model].findAll();
+        if(query.length > 2)
+        {
+            return datasource[this.Model].findAll(
+                {
+                    where: {
+                        [Op.or]: [
+
+                        
+                            { author : {[Op.like] : `%${query}%`} },
+                            { thought : {[Op.like] : `%${query}%`} },
+                            { thought : {[Op.like] : `%${query}%`} },
+                            { customModel : {[Op.like] : `%${query}%`} }
+                        ]},
+                    
+                    offset: Number((page * limit) - limit),
+                    limit: limit
+                }
+            );
+        }else
+        {
+            
+            return datasource[this.Model].findAll(
+                {
+                    
+                    offset: Number((page * limit) - limit),
+                    limit: limit
+                }
+            );
+
+        }
+
     }
+
+
+
+    
 
     async GetId(id)
     {
@@ -42,6 +80,41 @@ class Service
                 }
             }
         );
+    }
+
+    async GetAllFavoriteThought(page,limit,query)
+    {
+        if(query.length < 2)
+        {
+            return datasource[this.Model].findAll(
+                {
+                    where:
+                    {
+                        favorite: true
+                    },
+                    offset: Number((page * limit) - limit),
+                    limit: limit
+                }
+            );
+        }else
+        {
+            return datasource[this.Model].findAll(
+                {
+                    where:
+                {
+                    [Op.or]:[ 
+                        { author : {[Op.like] : `%${query}%`} },
+                        { thought : {[Op.like] : `%${query}%`} },
+                        { thought : {[Op.like] : `%${query}%`} },
+                        { customModel : {[Op.like] : `%${query}%`} } 
+                    ],
+                    favorite: true
+                },
+                    offset: Number((page * limit) - limit),
+                    limit: limit
+                }
+            );
+        }
     }
 }
 

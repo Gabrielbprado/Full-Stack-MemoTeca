@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict';
 const {
     Model
@@ -9,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-        // eslint-disable-next-line no-unused-vars
         static associate(models) {
             // define association here
         }
@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     Thought.init({
         thought: DataTypes.STRING,
         author: DataTypes.STRING,
-        customModel: DataTypes.STRING
+        customModel: DataTypes.STRING,
+        favorite: DataTypes.BOOLEAN
     }, {
         sequelize,
         modelName: 'Thought',
-        tableName: 'thoughts'
     });
     return Thought;
 };
