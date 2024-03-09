@@ -32,6 +32,22 @@ class ThoughtController extends ControllerBase
         
     }
     
+    async FavoriteThought(req,res)
+    {
+        try
+        {
+            const favorite = req.body.favorite;
+            const thought  = await service.GetId(req.params.id);
+            thought.favorite = favorite;
+            await thought.save();
+            res.status(201).json({message: 'Pensamento Favoritado'});
+        } catch (error)
+        {
+            res.status(400).json({message: 'Erro ao favoritar pensamento'});
+        }
+
+
+    }
 }
 
 module.exports = ThoughtController;

@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('thoughts', {
+        await queryInterface.createTable('Thoughts', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -10,16 +10,19 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             thought: {
-                allowNull: false,
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false
             },
             author: {
-                allowNull: false,
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false
             },
             customModel: {
-              
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            favorite: {
+                type: Sequelize.BOOLEAN
             },
             createdAt: {
                 allowNull: false,
@@ -31,8 +34,7 @@ module.exports = {
             }
         });
     },
-    // eslint-disable-next-line no-unused-vars
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('thoughts');
+        await queryInterface.dropTable('Thoughts');
     }
 };

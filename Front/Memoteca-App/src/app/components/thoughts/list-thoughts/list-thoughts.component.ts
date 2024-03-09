@@ -27,11 +27,8 @@ export class ListThoughtsComponent implements OnInit{
 
   LoadMore() 
   {
-    console.log("this.pag++");
-    console.log(this.pag++);
-    console.log("++this.pag");
-    console.log(++this.pag);
-    this.service.GetAll(this.pag++,this.search).subscribe((listThoughts) =>
+   
+    this.service.GetAll(++this.pag,this.search).subscribe((listThoughts) =>
     {
       this.listThoughts.push(...listThoughts);
       if(!listThoughts.length)
@@ -39,10 +36,13 @@ export class ListThoughtsComponent implements OnInit{
         this.haveMoreThoughts = false;
       }
     });
+    
   }
 
   searchThoughts()
   {
+    this.haveMoreThoughts = true;
+    this.pag = 1;
     this.service.GetAll(this.pag,this.search).subscribe((listThoughts) =>
     {
       this.listThoughts = listThoughts;
@@ -52,8 +52,7 @@ export class ListThoughtsComponent implements OnInit{
   
   ngOnInit() : void
   {
-    this.haveMoreThoughts = true;
-    this.pag = 1;
+    
     this.service.GetAll(this.pag,this.search).subscribe((listThoughts) =>
     {
       this.listThoughts = listThoughts;

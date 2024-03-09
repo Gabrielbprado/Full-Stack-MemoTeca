@@ -14,10 +14,9 @@ export class ThoughtService {
   GetAll(page:number,query: string) :Observable<thoughts[]>
   {
     let params = new HttpParams().set('page',page)
-    if(query.trim().length > 2)
-    {
+    
       params = params.set('query',query);
-    }
+    
     return this.http.get<thoughts[]>(this.API,{params});
   }
 
