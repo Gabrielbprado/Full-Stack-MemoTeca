@@ -48,11 +48,12 @@ export class ListThoughtsComponent implements OnInit{
 
   searchThoughts()
   {
+    
     this.haveMoreThoughts = true;
     this.pag = 1;
-    this.service.GetAll(this.pag,this.search,this.favorite).subscribe((listThoughts) =>
+    this.service.GetAll(this.pag,this.search,this.favorite).subscribe((Thoughts) =>
     {
-      this.listThoughts = listThoughts;
+      this.listThoughts = Thoughts;
     
     });
   }
@@ -62,7 +63,7 @@ export class ListThoughtsComponent implements OnInit{
     this.MyMural = 'Meus Favoritos'
    this.haveMoreThoughts = true;
     this.favorite = true;    
-    this.pag = 2;
+    this.pag = 1;
     this.service.GetAll(this.pag,this.search,this.favorite).subscribe((listThoughts) =>
     {
       this.listThoughts = listThoughts;
